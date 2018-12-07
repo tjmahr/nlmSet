@@ -117,12 +117,40 @@ Row {.tabset, data-width=600}
   mExpr1 <- mForm1[[3]] 
   
     output$Curve1 <- renderPlot({
-    thetaA_1 <- input$thetaA_1
-    thetaV_1 <- input$thetaV_1
+      thetaA_1 <- input$thetaA_1
+      thetaV_1 <- input$thetaV_1
     
-
-    eval(call("curve", mExpr1, col = 2, ylab = "", main =
-                expression(frac(theta[a]*x, theta[v] + x))))
+      eval(call("curve", mExpr1, col = 2, ylab = "", main =
+                  expression(frac(theta[a]*x, theta[v] + x))))
+    
+      thetaA_1 <- input$thetaA_1 * 1.2
+      thetaV_1 <- input$thetaV_1
+    
+      eval(call("curve", mExpr1, col = 3, ylab = "", main =
+                  expression(frac(theta[a]*x, theta[v] + x)), add = TRUE))
+    
+      thetaA_1 <- input$thetaA_1 * .8
+      thetaV_1 <- input$thetaV_1
+    
+      eval(call("curve", mExpr1, col = 3, ylab = "", 
+                main = expression(frac(theta[a]*x, theta[v] + x)), 
+                add = TRUE))
+      
+      thetaA_1 <- input$thetaA_1
+      thetaV_1 <- input$thetaV_1 * 1.2
+    
+      eval(call("curve", mExpr1, col = 4, ylab = "", 
+                main = expression(frac(theta[a]*x, theta[v] + x)), 
+                add = TRUE))
+      
+      thetaA_1 <- input$thetaA_1
+      thetaV_1 <- input$thetaV_1 * .8
+    
+      eval(call("curve", mExpr1, col = 4, ylab = "", 
+                main = expression(frac(theta[a]*x, theta[v] + x)), 
+                add = TRUE))
+      
+    
   },  height = 465, width = 650)
 
  plotOutput("Curve1")
